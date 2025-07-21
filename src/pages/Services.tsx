@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 import { motion } from 'framer-motion';
 import { FaUtensils, FaUserTie, FaCar, FaBroom, FaGlassCheers, FaConciergeBell, FaUserCheck, FaArrowRight } from 'react-icons/fa';
 import './Services.css';

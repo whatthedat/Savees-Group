@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaCalendarAlt, FaClock, FaArrowRight, FaSearch, FaTag } from 'react-icons/fa';
+import { FaCalendarAlt, FaClock, FaArrowRight, FaSearch} from 'react-icons/fa';
 import './Blog.css';
 
 type BlogPost = {

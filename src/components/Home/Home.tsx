@@ -133,36 +133,6 @@ const Home = () => {
     { title: 'Marketing Specialist', location: 'Los Angeles, CA', type: 'Part-time' }
   ];
 
-  const testimonials = [
-    { 
-      name: 'David Mitchell', 
-      role: 'Operations Director, Grand Hyatt', 
-      content: 'Savees Group has been instrumental in helping us find top-tier hospitality staff. Their candidates are always professional, well-vetted, and ready to hit the ground running. The quality of service is exceptional.',
-      rating: 5,
-      image: '/images/testimonials/david-mitchell.jpg'
-    },
-    { 
-      name: 'Sarah Johnson', 
-      role: 'HR Manager, Marriott International', 
-      content: 'Working with Savees Group has streamlined our recruitment process significantly. Their understanding of the hospitality industry is unmatched, and they consistently deliver candidates who exceed our expectations.',
-      rating: 5,
-      image: '/images/testimonials/sarah-johnson.jpg'
-    },
-    { 
-      name: 'Michael Chen', 
-      role: 'General Manager, Hilton', 
-      content: 'The team at Savees Group truly understands the demands of luxury hospitality. They\'ve provided us with staff who not only meet but often exceed our high standards. Reliable, professional, and a pleasure to work with.',
-      rating: 5,
-      image: '/images/testimonials/michael-chen.jpg'
-    },
-    { 
-      name: 'Emma Williams', 
-      role: 'Director of HR, Four Seasons', 
-      content: 'Savees Group has been a trusted partner in our staffing needs. Their attention to detail and commitment to quality is evident in every candidate they present. Highly recommended for any hospitality business.',
-      rating: 5,
-      image: '/images/testimonials/emma-williams.jpg'
-    }
-  ];
 
   const clients = ['Client1', 'Client2', 'Client3', 'Client4', 'Client5'];
   const blogPosts = [
