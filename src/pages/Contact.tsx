@@ -325,10 +325,7 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="hours-item">
-                  <span className="days">Saturday:</span>
-                  <span className="time">9:00 AM - 5:00 PM</span>
-                </div>
+            
             </motion.div>
             
             <motion.div 

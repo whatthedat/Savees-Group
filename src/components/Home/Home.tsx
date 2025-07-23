@@ -2,6 +2,12 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
+import { blogPosts } from '../../data/blogPosts';
+import type { BlogPost } from '../../data/blogPosts';
+import { getRecentPosts } from './getRecentPosts';
+
+// Ensure blogPosts is properly typed
+const typedBlogPosts: BlogPost[] = blogPosts;
 import './Home.css';
 
 import type { Variants } from 'framer-motion';
@@ -45,6 +51,8 @@ const fadeInUp: Variants = {
 // Animation variants with proper typing
 
 const Home = () => {
+  // Get the 3 most recent blog posts
+  const recentPosts = getRecentPosts(typedBlogPosts, 3);
   // Services data
   const services = [
     { 
@@ -139,23 +147,6 @@ const Home = () => {
 
 
   const clients = ['Client1', 'Client2', 'Client3', 'Client4', 'Client5'];
-  const blogPosts = [
-    { 
-      title: 'Top Hospitality Staffing Trends for 2025', 
-      excerpt: 'Discover the latest trends shaping the hospitality staffing industry this year', 
-      date: 'July 15, 2025' 
-    },
-    { 
-      title: 'How to Build a Stellar Hospitality Team', 
-      excerpt: 'Expert tips for assembling and maintaining a top-performing hospitality staff', 
-      date: 'July 10, 2025' 
-    },
-    { 
-      title: 'The Impact of Seasonal Hiring on Hospitality', 
-      excerpt: 'Strategies for managing workforce fluctuations throughout the year', 
-      date: 'July 5, 2025' 
-    }
-  ];
 
   // Animation controls for hero content
   const heroControls = useAnimation();
@@ -574,111 +565,69 @@ const Home = () => {
       </section>
 
       {/* Blog Section */}
-      <section className="blog-section">
+      <section className="section-padding bg-light" id="blog">
         <div className="container">
           <motion.div 
-            className="section-header"
+            className="section-header text-center mb-5"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2>Latest Insights</h2>
-            <p>Stay updated with industry trends and news</p>
+            <h2 className="section-title">Latest From Our Blog</h2>
+            <p className="section-subtitle">Insights, news, and updates from the world of hospitality staffing</p>
           </motion.div>
           
-          <motion.div 
-            className="blog-grid"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {blogPosts.map((post, index) => (
-              <motion.div 
-                key={index} 
+          <div className="blog-grid">
+            {recentPosts.map((post, index) => (
+              <motion.article 
+                key={post.id}
                 className="blog-card"
-                variants={itemVariants}
-                whileHover={{
-                  y: -10,
-                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.1)',
-                  transition: { duration: 0.3 }
-                }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
               >
-                <motion.div 
-                  className="blog-image"
-                  whileHover={{
-                    scale: 1.05,
-                    transition: { duration: 0.5 }
-                  }}
-                >
-                  <img 
-                    src={`/images/blog/post-${index + 1}.jpg`} 
-                    alt={post.title}
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'data:image/svg+xml;charset=UTF-8,' + 
-                        encodeURIComponent(
-                          `<svg width="350" height="200" viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="350" height="200" fill="%23f5f5f5"/>
-                            <text x="50%" y="50%" font-family="Arial" font-size="14" text-anchor="middle" dominant-baseline="middle" fill="%23999">
-                              ${post.title}
-                            </text>
-                          </svg>`
-                        );
-                    }}
-                  />
-                </motion.div>
-                <div className="blog-content">
-                  <motion.div 
-                    className="blog-meta"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    <span><FaCalendarAlt /> {post.date}</span>
-                  </motion.div>
-                  <motion.h3
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    {post.title}
-                  </motion.h3>
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    {post.excerpt}
-                  </motion.p>
-                  <Link to="/blog/post-1" className="read-more">
-                    <motion.span
-                      initial={{ x: 0 }}
-                      whileHover={{ x: 5 }}
-                      transition={{ type: 'spring', stiffness: 500 }}
-                    >
-                      Read More <FaArrowRight />
-                    </motion.span>
-                  </Link>
-                </div>
-              </motion.div>
+                <Link to={`/blog/${post.slug}`} className="blog-card-link">
+                  <div className="blog-card-image">
+                    <img src={post.image} alt={post.title} loading="lazy" />
+                    <span className="blog-card-category">{post.category}</span>
+                  </div>
+                  <div className="blog-card-content">
+                    <div className="blog-card-meta">
+                      <span className="blog-card-date">
+                        <FaCalendarAlt /> {post.date}
+                      </span>
+                      <span className="blog-card-read-time">
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <h3 className="blog-card-title">{post.title}</h3>
+                    <p className="blog-card-excerpt">
+                      {post.excerpt.length > 120 
+                        ? `${post.excerpt.substring(0, 120)}...` 
+                        : post.excerpt}
+                    </p>
+                    <div className="blog-card-footer">
+                      <span className="read-more">
+                        Read More <FaArrowRight className="arrow-icon" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
             ))}
-          </motion.div>
+          </div>
           
           <motion.div 
-            className="text-center mt-4"
+            className="text-center mt-5"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.3 }}
           >
-            <Link to="/blog" className="btn btn-outline">
-              View All Articles
-            </Link>
+            
           </motion.div>
         </div>
       </section>

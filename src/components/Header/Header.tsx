@@ -59,9 +59,9 @@ const Header = () => {
               <li className={`nav-item ${location.pathname === '/services' ? 'active' : ''}`}>
                 <Link to="/services" className="nav-link">Services</Link>
               </li>
-              <li className={`nav-item ${location.pathname === '/jobs' ? 'active' : ''}`}>
+              {/* <li className={`nav-item ${location.pathname === '/jobs' ? 'active' : ''}`}>
                 <Link to="/jobs" className="nav-link">Jobs</Link>
-              </li>
+              </li> */}
               <li className={`nav-item ${location.pathname === '/blog' ? 'active' : ''}`}>
                 <Link to="/blog" className="nav-link">Blog</Link>
               </li>
