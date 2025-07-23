@@ -23,7 +23,7 @@ const Footer = () => {
               <a href="https://www.instagram.com/savees_group_ltd" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram />
               </a>
-              <a href="https://www.linkedin.com/company/saveesgroup" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/savees-group-ltd/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                 <FaLinkedin />
               </a>
             </div>

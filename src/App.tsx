@@ -7,6 +7,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Jobs from './pages/Jobs';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import './styles/global.css';
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

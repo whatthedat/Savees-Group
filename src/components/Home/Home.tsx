@@ -126,19 +126,35 @@ const Home = () => {
     }
   ];
 
+  // Job openings section has been hidden as per request
+  /*
   const jobOpenings = [
     { title: 'Senior Accountant', location: 'New York, NY', type: 'Full-time' },
     { title: 'HR Manager', location: 'Remote', type: 'Full-time' },
     { title: 'Business Analyst', location: 'Chicago, IL', type: 'Contract' },
     { title: 'Marketing Specialist', location: 'Los Angeles, CA', type: 'Part-time' }
   ];
+  */
+  const jobOpenings: any[] = []; // Empty array to prevent undefined errors
 
 
   const clients = ['Client1', 'Client2', 'Client3', 'Client4', 'Client5'];
   const blogPosts = [
-    { title: 'Future of Work', excerpt: 'Trends shaping the workplace of tomorrow', date: 'July 15, 2023' },
-    { title: 'Hiring Strategies', excerpt: 'How to attract top talent in a competitive market', date: 'July 10, 2023' },
-    { title: 'HR Compliance', excerpt: 'Navigating the latest employment regulations', date: 'July 5, 2023' }
+    { 
+      title: 'Top Hospitality Staffing Trends for 2025', 
+      excerpt: 'Discover the latest trends shaping the hospitality staffing industry this year', 
+      date: 'July 15, 2025' 
+    },
+    { 
+      title: 'How to Build a Stellar Hospitality Team', 
+      excerpt: 'Expert tips for assembling and maintaining a top-performing hospitality staff', 
+      date: 'July 10, 2025' 
+    },
+    { 
+      title: 'The Impact of Seasonal Hiring on Hospitality', 
+      excerpt: 'Strategies for managing workforce fluctuations throughout the year', 
+      date: 'July 5, 2025' 
+    }
   ];
 
   // Animation controls for hero content
@@ -178,30 +194,30 @@ const Home = () => {
                 className="hero-title"
                 variants={itemVariants}
               >
-                Your Trusted Partner in <motion.span 
+                Where <motion.span 
                   className="highlight"
                   initial={{ backgroundSize: '0% 10px' }}
                   animate={{ backgroundSize: '100% 10px' }}
                   transition={{ duration: 1, delay: 0.8, ease: 'easeInOut' }}
                 >
-                  Global Staffing
+                  Service
                 </motion.span>
+                Excellence 
               </motion.h1>
               <motion.p 
                 className="hero-subtitle"
                 variants={itemVariants}
               >
-                Connecting top talent with leading businesses worldwide through innovative staffing solutions.
-                Your success is our priority.
+                UK’s trusted hospitality staffing partner for FOH, BOH, Events, and Logistics.
               </motion.p>
               <motion.div 
                 className="hero-buttons"
                 variants={itemVariants}
               >
-                <Link to="#contact" className="btn btn-primary">
+                <Link to="/contact" className="btn btn-primary">
                   Get Started
                 </Link>
-                <Link to="#about" className="btn btn-outline">
+                <Link to="/about" className="btn btn-outline">
                   Learn More
                 </Link>
               </motion.div>
@@ -219,7 +235,7 @@ const Home = () => {
               }}
             >
               <img 
-                src="/images/hero.png" 
+                src="/images/hero.jpg" 
                 alt="Hero illustration" 
                 className="hero-img"
               />
@@ -370,7 +386,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Job Openings Section */}
+      {/* Job Openings Section - Hidden as per request */}
+      {false && (
       <section className="jobs-section">
         <div className="container">
           <motion.div 
@@ -417,15 +434,20 @@ const Home = () => {
             ))}
           </motion.div>
           
-          <div className="text-center mt-4">
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
             <Link to="/careers" className="btn btn-outline">
               View All Openings
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
-
-
+      )}
 
       {/* Clients Section */}
       <section className="clients-section">
@@ -501,10 +523,10 @@ const Home = () => {
             variants={containerVariants}
           >
             {[
-              { value: '10+', label: 'Years Experience' },
-              { value: '500+', label: 'Clients Served' },
-              { value: '10,000+', label: 'Professionals Placed' },
-              { value: '95%', label: 'Retention Rate' }
+              { value: '30+', label: 'Years Experience' },
+              { value: '200+', label: 'Clients Served' },
+              { value: '1000+', label: 'Professionals Placed' },
+              { value: '93%', label: 'Retention Rate' }
             ].map((item, index) => (
               <motion.div 
                 key={index} 

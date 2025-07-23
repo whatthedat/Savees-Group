@@ -1,98 +1,57 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaCalendarAlt, FaClock, FaArrowRight, FaSearch} from 'react-icons/fa';
+import { FaSearch, FaCalendarAlt, FaClock, FaArrowRight } from 'react-icons/fa';
+import { type BlogPost, blogPosts } from '../data/blogPosts';
 import './Blog.css';
 
-type BlogPost = {
-  id: number;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  image: string;
-  category: string;
-  slug: string;
-};
-
 const Blog = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [categories, setCategories] = useState<string[]>([]);
 
-  // Sample blog posts data
-  const blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      title: 'The Future of Hospitality Staffing in the UK',
-      excerpt: 'Exploring the latest trends and innovations shaping the hospitality staffing industry in the United Kingdom...',
-      date: 'July 15, 2025',
-      readTime: '5 min read',
-      image: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'Industry News',
-      slug: 'future-of-hospitality-staffing-uk'
-    },
-    {
-      id: 2,
-      title: 'How to Build a Strong Team for Your Restaurant',
-      excerpt: 'Essential tips for restaurant owners looking to build and maintain a strong, reliable team in the competitive food service industry...',
-      date: 'June 28, 2025',
-      readTime: '7 min read',
-      image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'Tips & Advice',
-      slug: 'build-strong-restaurant-team'
-    },
-    {
-      id: 3,
-      title: 'The Impact of Seasonal Staffing on Hospitality Businesses',
-      excerpt: 'Understanding how effective seasonal staffing strategies can help hospitality businesses thrive during peak periods...',
-      date: 'June 15, 2025',
-      readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1566073053324-2f9e78f0f02b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'Industry News',
-      slug: 'impact-seasonal-staffing-hospitality'
-    },
-    {
-      id: 4,
-      title: 'Top 5 Qualities to Look for in Hospitality Staff',
-      excerpt: 'Discover the essential qualities that make a great hospitality professional and how to identify them during the hiring process...',
-      date: 'May 30, 2025',
-      readTime: '4 min read',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'Recruitment',
-      slug: 'qualities-hospitality-staff'
-    },
-    {
-      id: 5,
-      title: 'Navigating Work Permits for International Hospitality Workers',
-      excerpt: 'A comprehensive guide to work permits and visa requirements for international hospitality staff in the UK...',
-      date: 'May 18, 2025',
-      readTime: '8 min read',
-      image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'Legal & Compliance',
-      slug: 'work-permits-international-staff'
-    },
-    {
-      id: 6,
-      title: 'Employee Retention Strategies for the Hospitality Industry',
-      excerpt: 'Effective strategies to improve employee retention rates and reduce turnover in the competitive hospitality sector...',
-      date: 'May 5, 2025',
-      readTime: '6 min read',
-      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      category: 'HR Management',
-      slug: 'employee-retention-strategies-hospitality'
+  // Initialize filtered posts and categories
+  useEffect(() => {
+    setFilteredPosts(blogPosts);
+    
+    // Extract unique categories from blog posts
+    const uniqueCategories = Array.from(new Set(blogPosts.map(post => post.category)));
+    setCategories(['all', ...uniqueCategories]);
+  }, []);
+
+  // Filter posts based on search term and selected category
+  useEffect(() => {
+    let result = [...blogPosts];
+    
+    // Filter by search term
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      result = result.filter(
+        post => 
+          post.title.toLowerCase().includes(term) || 
+          post.excerpt.toLowerCase().includes(term) ||
+          post.content.toLowerCase().includes(term)
+      );
     }
-  ];
+    
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      result = result.filter(post => post.category === selectedCategory);
+    }
+    
+    setFilteredPosts(result);
+  }, [searchTerm, selectedCategory]);
 
-  // Get unique categories
-  const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
+  // Function to handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
 
-  // Filter posts based on search and category
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  // Function to handle category filter change
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+  };
 
   return (
     <main className="blog-page">
@@ -101,26 +60,12 @@ const Blog = () => {
         <div className="container">
           <motion.div 
             className="blog-hero-content"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
           >
             <h1>Our Blog</h1>
             <p>Insights, news, and updates from the world of hospitality staffing</p>
-            
-            {/* Search Bar */}
-            <div className="blog-search">
-              <div className="search-input-container">
-                <FaSearch className="search-icon" />
-                <input
-                  type="text"
-                  placeholder="Search articles..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="search-input"
-                />
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -128,78 +73,84 @@ const Blog = () => {
       {/* Blog Content */}
       <section className="blog-content">
         <div className="container">
-          {/* Category Filter */}
-          <div className="blog-categories">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className={`category-tag ${selectedCategory === category ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(category)}
-              >
-                {category}
-              </button>
-            ))}
+          {/* Search and Filter */}
+          <div className="blog-filters">
+            <div className="search-container">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="search-input"
+              />
+            </div>
+            
+            <div className="category-filters">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  className={`category-tag ${selectedCategory === category ? 'active' : ''}`}
+                  onClick={() => handleCategoryChange(category)}
+                >
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Blog Posts Grid */}
-          <div className="blog-grid">
-            {filteredPosts.length > 0 ? (
-              filteredPosts.map((post, index) => (
+          {/* Blog Grid */}
+          {filteredPosts.length > 0 ? (
+            <div className="blog-grid">
+              {filteredPosts.map((post) => (
                 <motion.article 
-                  key={post.id}
+                  key={post.id} 
                   className="blog-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)' }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
                 >
                   <Link to={`/blog/${post.slug}`} className="blog-card-link">
                     <div className="blog-card-image">
-                      <img src={post.image} alt={post.title} />
-                      <span className="blog-category">{post.category}</span>
+                      <img 
+                        src={post.image} 
+                        alt={post.title} 
+                        loading="lazy"
+                      />
+                      <span className="blog-card-category">{post.category}</span>
                     </div>
                     <div className="blog-card-content">
-                      <div className="blog-meta">
-                        <span className="blog-date">
+                      <div className="blog-card-meta">
+                        <span className="blog-card-date">
                           <FaCalendarAlt /> {post.date}
                         </span>
-                        <span className="blog-read-time">
+                        <span className="blog-card-read-time">
                           <FaClock /> {post.readTime}
                         </span>
                       </div>
-                      <h2 className="blog-title">{post.title}</h2>
-                      <p className="blog-excerpt">{post.excerpt}</p>
-                      <div className="blog-read-more">
-                        Read more <FaArrowRight className="arrow-icon" />
+                      <h3 className="blog-card-title">{post.title}</h3>
+                      <p className="blog-card-excerpt">
+                        {post.excerpt.length > 150 
+                          ? `${post.excerpt.substring(0, 150)}...` 
+                          : post.excerpt}
+                      </p>
+                      <div className="blog-card-footer">
+                        <span className="read-more">
+                          Read more <FaArrowRight className="arrow-icon" />
+                        </span>
                       </div>
                     </div>
                   </Link>
                 </motion.article>
-              ))
-            ) : (
-              <div className="no-results">
-                <h3>No articles found</h3>
-                <p>Try adjusting your search or filter criteria</p>
-              </div>
-            )}
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="blog-newsletter">
-            <h3>Stay Updated</h3>
-            <p>Subscribe to our newsletter for the latest industry insights and updates</p>
-            <form className="newsletter-form">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="newsletter-input"
-                required 
-              />
-              <button type="submit" className="newsletter-button">
-                Subscribe
-              </button>
-            </form>
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="no-results">
+              <h3>No articles found</h3>
+              <p>Try adjusting your search or filter criteria</p>
+            </div>
+          )}
         </div>
       </section>
     </main>
