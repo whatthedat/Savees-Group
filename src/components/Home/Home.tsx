@@ -2,6 +2,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCalendarAlt, FaArrowRight } from 'react-icons/fa';
+
+
 import { blogPosts } from '../../data/blogPosts';
 import type { BlogPost } from '../../data/blogPosts';
 import { getRecentPosts } from './getRecentPosts';
@@ -146,7 +148,14 @@ const Home = () => {
   const jobOpenings: any[] = []; // Empty array to prevent undefined errors
 
 
-  const clients = ['Client1', 'Client2', 'Client3', 'Client4', 'Client5'];
+  const clients = [
+    { name: 'Client 1', filename: 'client 1.png' },
+    { name: 'Client 2', filename: 'client 2.png' },
+    { name: 'Client 3', filename: 'client 3.png' },
+    { name: 'Client 4', filename: 'client 4.png' },
+    { name: 'Client 5', filename: 'client 5.png' },
+
+  ];
 
   // Animation controls for hero content
   const heroControls = useAnimation();
@@ -297,9 +306,17 @@ const Home = () => {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.8, type: 'spring' }}
-            >
-              <img src="/images/about-us.jpg" alt="Our Team" />
-            </motion.div>
+              style={{
+                backgroundImage: 'url(/images/about.jpg)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                borderRadius: '12px',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
+                minHeight: '400px',
+                width: '100%'
+              }}
+            />
           </motion.div>
         </div>
       </section>
@@ -454,51 +471,42 @@ const Home = () => {
           </motion.div>
           
           <motion.div 
-            className="clients-grid"
+            className="clients-swiper-container"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {clients.map((client, index) => (
-              <motion.div 
-                key={index}
-                className="client-logo"
-                whileHover={{ 
-                  scale: 1.05,
-                  filter: 'grayscale(0%) opacity(1)',
-                  transition: { duration: 0.3 }
-                }}
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ 
-                  scale: 1, 
-                  opacity: 0.7,
-                  transition: { 
-                    delay: index * 0.1,
-                    type: 'spring',
-                    damping: 10
-                  }
-                }}
-                viewport={{ once: true, margin: "-50px" }}
-              >
-                <img 
-                  src={`/images/clients/${client.toLowerCase()}.png`} 
-                  alt={client}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'data:image/svg+xml;charset=UTF-8,' + 
-                      encodeURIComponent(
-                        `<svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
-                          <rect width="150" height="80" fill="%23f5f5f5"/>
-                          <text x="50%" y="50%" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="%23999">
-                            ${client} Logo
-                          </text>
-                        </svg>`
-                      );
+            <div className="clients-grid">
+              {clients.map((client, index) => (
+                <motion.div 
+                  key={index}
+                  className="client-logo"
+                  whileHover={{ 
+                    scale: 1.05,
+                    filter: 'grayscale(0%) opacity(1)',
+                    transition: { duration: 0.3 }
                   }}
-                />
-              </motion.div>
-            ))}
+                >
+                  <img 
+                    src={`/images/clients/${client.filename}`} 
+                    alt={client.name}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'data:image/svg+xml;charset=UTF-8,' + 
+                        encodeURIComponent(
+                          `<svg width="150" height="80" viewBox="0 0 150 80" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="150" height="80" fill="%23f5f5f5"/>
+                            <text x="50%" y="50%" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="%23999">
+                              ${client.name} Logo
+                            </text>
+                          </svg>`
+                        );
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
