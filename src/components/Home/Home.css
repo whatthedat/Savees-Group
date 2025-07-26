@@ -584,15 +584,38 @@
   }
   
   /* Services section mobile styles */
-  .service-item {
+  .services-section {
+    padding: 2rem 1rem;
+  }
+  
+  .services-list {
+    display: flex;
     flex-direction: column;
-    min-height: auto;
-    margin-bottom: 2.5rem;
+    gap: 2rem;
+  }
+  
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
   }
   
   .service-image-container {
-    flex: 0 0 250px;
-    order: 0 !important;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex: none;
+  }
+  
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
   }
   
   .service-content {
@@ -602,15 +625,56 @@
   .service-content h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: #0a2540;
   }
   
-  .service-item:nth-child(even) .service-content {
-    align-items: flex-start;
-    text-align: left;
+  .service-content p {
+    color: #4a5568;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
   }
   
-  .service-item:nth-child(even) .service-link {
-    align-self: flex-start;
+  .service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .service-features li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+  }
+  
+  .service-features li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #f5b301;
+    font-weight: bold;
+  }
+  
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    color: #1a56db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .service-link svg {
+    margin-left: 0.5rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .service-link:hover {
+    color: #1e429f;
+  }
+  
+  .service-link:hover svg {
+    transform: translateX(4px);
   }
   
   .features-grid {

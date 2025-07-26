@@ -58,6 +58,28 @@ const Home = () => {
   // Services data
   const services = [
     { 
+      image: '/images/services/logistical assitance.jpg',
+      title: 'Logistical Assistance', 
+      description: 'Comprehensive logistics support for all your operational needs.',
+      features: [
+        'Inventory Management',
+        'Supply Chain Coordination',
+        'Transportation Planning',
+        'Warehouse Operations'
+      ]
+    },
+    { 
+      image: '/images/services/warehouse.jpg',
+      title: 'Warehouse Operatives', 
+      description: 'Skilled warehouse staff for efficient operations.',
+      features: [
+        'Goods In/Out',
+        'Stock Control',
+        'Order Picking',
+        'Forklift Operation'
+      ]
+    },
+    { 
       image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
       title: 'Waiters & Waitresses', 
       description: 'Professional and experienced wait staff to provide exceptional service in any dining environment.',
@@ -77,17 +99,6 @@ const Home = () => {
         'Kitchen maintenance',
         'Stock management',
         'Health and safety compliance'
-      ]
-    },
-    { 
-      image: '/images/services/warehouse.jpg',
-      title: 'Warehouse Staff', 
-      description: 'Reliable warehouse personnel for efficient inventory and logistics management.',
-      features: [
-        'Stock handling',
-        'Inventory control',
-        'Order processing',
-        'Equipment operation'
       ]
     },
     { 

@@ -1,6 +1,6 @@
 import { useState, type JSX } from 'react';
 import { motion } from 'framer-motion';
-import { FaUtensils, FaUserTie, FaCar, FaBroom, FaGlassCheers, FaConciergeBell, FaUserCheck, FaArrowRight } from 'react-icons/fa';
+import { FaUtensils, FaUserTie, FaCar, FaBroom, FaGlassCheers, FaConciergeBell, FaUserCheck, FaArrowRight, FaTruck, FaBoxes } from 'react-icons/fa';
 import './Services.css';
 
 type Service = {
@@ -20,6 +20,36 @@ const Services = () => {
   const services: Service[] = [
     {
       id: 1,
+      title: 'Logistical Assistance',
+      icon: <FaTruck className="service-icon" />,
+      description: 'Comprehensive logistics support for all your operational needs',
+      details: [
+        'Inventory Management',
+        'Supply Chain Coordination',
+        'Transportation Planning',
+        'Warehouse Operations',
+        'Distribution Support'
+      ],
+      image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      category: 'boh'
+    },
+    {
+      id: 2,
+      title: 'Warehouse Operatives',
+      icon: <FaBoxes className="service-icon" />,
+      description: 'Skilled warehouse staff for efficient operations',
+      details: [
+        'Goods In/Out',
+        'Stock Control',
+        'Order Picking',
+        'Forklift Operation',
+        'Inventory Management'
+      ],
+      image: '/images/services/warehouse.jpg',
+      category: 'boh'
+    },
+    {
+      id: 3,
       title: 'Chefs & Cooks',
       icon: <FaUtensils className="service-icon" />,
       description: 'Professional chefs and cooks for all types of culinary needs',
@@ -90,7 +120,7 @@ const Services = () => {
         'Bar Managers',
         'Cocktail Servers'
       ],
-      image: 'https://images.unsplash.com/photo-1551024601-bec78aea704c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+      image: '/images/services/bar staff.jpg',
       category: 'foh'
     },
     {
