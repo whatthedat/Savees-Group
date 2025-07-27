@@ -66,7 +66,7 @@ const Contact = () => {
         company: formData.company,
         service: serviceOptions.find(s => s.value === formData.service)?.label || formData.service,
         message: formData.message,
-        to_email: 'info@saveesgroup.com', // Your receiving email
+        to_email: 'info@saveesgroup.com', // Primary receiving email
         reply_to: formData.email,
         date: new Date().toLocaleString(),
       };
@@ -170,9 +170,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3>Our Location</h3>
-                  <p>123 Hospitality Lane</p>
-                  <p>London, UK</p>
-                  <p>SW1A 1AA</p>
+                  <p>22A Queens Parade</p>
+                  <p>Hanger Lane</p>
+                  <p>W5 3HU</p>
                 </div>
               </div>
             </motion.div>
@@ -192,7 +192,6 @@ const Contact = () => {
                 <div>
                   <h3>Phone Number</h3>
                   <p><a href="tel:+447543538033">+44 754 353 8033</a></p>
-                  <p><a href="tel:+448000123456">+44 800 012 3456</a> (Toll-free)</p>
                 </div>
               </div>
             </motion.div>
@@ -212,8 +211,7 @@ const Contact = () => {
                 <div>
                   <h3>Email Us</h3>
                   <p><a href="mailto:info@saveesgroup.com">info@saveesgroup.com</a></p>
-                  <p><a href="mailto:careers@saveesgroup.com">careers@saveesgroup.com</a></p>
-                  <p><a href="mailto:support@saveesgroup.com">support@saveesgroup.com</a></p>
+                  <p><a href="mailto:saveesgroupltd@gmail.com">saveesgroupltd@gmail.com</a></p>
                 </div>
               </div>
             </motion.div>
