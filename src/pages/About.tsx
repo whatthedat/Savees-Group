@@ -190,25 +190,25 @@ const About = () => {
               <div className="contact-item">
                 <FaMapMarkerAlt className="contact-icon" />
                 <div>
-                  <h4>Our Locations</h4>
-                  <p>Kochi, Kerala, India</p>
-                  <p>London, United Kingdom</p>
+                  <h4>Our Address</h4>
+                  <p>22A Queens Parade</p>
+                  <p>Hanger Lane</p>
+                  <p>W5 3HU, UK</p>
                 </div>
               </div>
               <div className="contact-item">
                 <FaPhone className="contact-icon" />
                 <div>
                   <h4>Call Us</h4>
-                  <p>+44 123 456 7890 (UK)</p>
-                  <p>+91 123 456 7890 (IN)</p>
+                  <p><a href="tel:+447543538033">07543 538033</a></p>
                 </div>
               </div>
               <div className="contact-item">
                 <FaEnvelope className="contact-icon" />
                 <div>
                   <h4>Email Us</h4>
-                  <p>info@saveesgroup.com</p>
-                  <p>careers@saveesgroup.com</p>
+                  <p><a href="mailto:info@saveesgroup.com">info@saveesgroup.com</a></p>
+                  <p><a href="mailto:saveesgroupltd@gmail.com">saveesgroupltd@gmail.com</a></p>
                 </div>
               </div>
             </div>
