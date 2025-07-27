@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import './Contact.css';
@@ -43,17 +44,67 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Get EmailJS environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    // Validate environment variables
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS environment variables are not properly configured');
+      alert('Error: Email service configuration is missing. Please contact support.');
+      setIsSubmitting(false);
+      return;
+    }
+    
     try {
-      // In a real app, you would send the form data to your backend
-      console.log('Form submitted:', { 
-        ...formData, 
-        file: selectedFile?.name,
-        timestamp: new Date().toISOString()
-      });
+      // Prepare template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        company: formData.company,
+        service: serviceOptions.find(s => s.value === formData.service)?.label || formData.service,
+        message: formData.message,
+        to_email: 'info@saveesgroup.com', // Your receiving email
+        reply_to: formData.email,
+        date: new Date().toLocaleString(),
+      };
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send email using EmailJS
+      await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
       
+      // If file is attached, send a separate email with the file
+      if (selectedFile) {
+        const fileTemplateParams = {
+          ...templateParams,
+          subject: `File attachment from ${formData.name} - ${formData.company}`,
+          notes: 'A file was attached to this contact form submission.',
+        };
+        
+        // Create a new form data object for the file
+        const fileFormData = new FormData();
+        fileFormData.append('file', selectedFile);
+        fileFormData.append('service_id', serviceId);
+        fileFormData.append('template_id', templateId);
+        fileFormData.append('user_id', publicKey);
+        fileFormData.append('template_params', JSON.stringify(fileTemplateParams));
+        
+        // Send file via EmailJS
+        await emailjs.sendForm(
+          serviceId,
+          templateId,
+          fileFormData as any, // Type assertion needed for FormData
+          publicKey
+        );
+      }
+      
+      // Reset form on success
       setIsSubmitted(true);
       setFormData({ 
         name: '', 
@@ -64,8 +115,10 @@ const Contact = () => {
         message: '' 
       });
       setSelectedFile(null);
+      
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('There was an error sending your message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }

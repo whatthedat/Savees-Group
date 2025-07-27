@@ -14,7 +14,8 @@
   margin-bottom: var(--spacing-xl);
   padding: 0 2rem;
   box-sizing: border-box;
-  max-width: 900px;
+  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -194,9 +195,10 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 1520px) {
-  .footer {
-    width: 100%;
+@media (max-width: 1200px) {
+  .footer-content {
+    max-width: 100%;
+    padding: 0 1.5rem;
   }
 }
 
