@@ -211,9 +211,9 @@ const Home = () => {
                   animate={{ backgroundSize: '100% 10px' }}
                   transition={{ duration: 1, delay: 0.8, ease: 'easeInOut' }}
                 >
-                  Service
-                </motion.span>
-                Excellence 
+                  Service                
+                  </motion.span>
+                 Excellence 
               </motion.h1>
               <motion.p 
                 className="hero-subtitle"

@@ -3,6 +3,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Hero Section */
@@ -95,8 +96,101 @@
 
 /* Blog Content */
 .blog-content {
-  padding: 5rem 0;
+  padding: 3rem 1rem;
   background-color: #fff;
+}
+
+/* Blog Hero */
+.blog-hero {
+  padding: 6rem 1rem 4rem;
+}
+
+.blog-hero h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.blog-hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Search and Filters */
+.blog-search {
+  padding: 0 1rem;
+}
+
+.search-input {
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  font-size: 0.95rem;
+}
+
+.search-icon {
+  left: 0.9rem;
+}
+
+/* Blog Grid */
+.blog-grid {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.blog-card {
+  margin-bottom: 1.5rem;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .blog-content {
+    padding: 4rem 2rem;
+  }
+
+  .blog-hero {
+    padding: 7rem 2rem 5rem;
+  }
+
+  .blog-hero h1 {
+    font-size: 3rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .blog-search {
+    max-width: 600px;
+    margin: 2rem auto 0;
+    padding: 0;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .blog-content {
+    padding: 5rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .blog-hero {
+    padding: 8rem 0 6rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .blog-hero h1 {
+    font-size: 3.5rem;
+  }
 }
 
 /* Category Filter */
@@ -412,21 +506,11 @@
   box-shadow: 0 4px 12px rgba(249, 199, 79, 0.3);
 }
 
-/* Blog Post Styles */
-.blog-post {
-  padding: 4rem 0 6rem;
-  background-color: #fff;
-}
-
-.blog-post .container {
-  max-width: 900px;
+/* Blog Post Page */
+.blog-post-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.back-to-blog {
-  display: inline-flex;
-  align-items: center;
+  padding: 2rem 1rem;
   color: #4b5563;
   font-weight: 500;
   margin-bottom: 2rem;

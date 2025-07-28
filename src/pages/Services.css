@@ -3,6 +3,7 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color: #333;
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 /* Hero Section */
@@ -50,20 +51,21 @@
 
 /* Services Section */
 .services-section {
-  padding: 6rem 0;
+  padding: 4rem 1rem;
   background-color: #fff;
 }
 
 .services-tabs {
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .tab-btn {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   border: 2px solid #e5e7eb;
   background: #fff;
   border-radius: 50px;
@@ -71,7 +73,9 @@
   color: #4b5563;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  margin: 0.25rem 0;
 }
 
 .tab-btn:hover {
@@ -88,9 +92,46 @@
 /* Services Grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .services-section {
+    padding: 5rem 2rem;
+  }
+
+  .services-tabs {
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .services-section {
+    padding: 6rem 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1400px;
+    margin: 2rem auto 0;
+    padding: 0;
+  }
 }
 
 .service-card {

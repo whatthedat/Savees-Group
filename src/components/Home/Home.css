@@ -6,6 +6,8 @@
   background-color: #f8f9fa;
   color: var(--text-color);
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero::before {
@@ -21,13 +23,13 @@
 .hero-content-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 4rem;
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  position: relative;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 .hero-text {
@@ -200,17 +202,111 @@
   }
 }
 
-@media (max-width: 992px) {
+/* Mobile First Styles */
+@media (max-width: 480px) {
   .hero {
-    min-height: auto;
-    padding: 100px 0 60px;
+    padding: 100px 1.5rem 40px; /* Increased top padding from 60px to 100px */
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-content-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .hero-text {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin: 0 auto 1.5rem;
+    max-width: 100%;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 280px;
+    margin: 0;
+  }
+
+  .hero-image {
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+
+  .hero-img {
+    max-height: 50vh;
+    transform: none;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 481px) and (max-width: 991px) {
+  .hero {
+    padding: 120px 1.5rem 80px; /* Increased top padding from 80px to 120px */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-content-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+
+  .hero-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .hero {
+    padding: 140px 1.5rem 100px; /* Increased top padding from 100px to 140px */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .hero-content-wrapper {
     flex-direction: column;
     text-align: center;
     gap: 2.5rem;
-    padding: 0 1rem;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .hero-text {
