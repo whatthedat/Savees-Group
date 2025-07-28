@@ -9,8 +9,8 @@
 
 /* Hero Section */
 .about-hero {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  color: var(--white);
+  background: linear-gradient(135deg, #0a2540 0%, #1a365d 100%);
+  color: #ffffff;
   padding: 8rem 0 6rem;
   text-align: center;
   position: relative;
@@ -65,27 +65,29 @@
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: var(--text-dark);
+  color: white;
   margin-bottom: 1.5rem;
   position: relative;
   display: inline-block;
   font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .section-divider {
   height: 4px;
   width: 80px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+  background: transparent;
   margin: 1rem auto 2rem;
   border-radius: 2px;
 }
 
 .section-header p {
-  color: var(--text-light);
+  color: white;
   font-size: 1.1rem;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.7;
+  opacity: 0.9;
 }
 
 /* About Section */
@@ -213,53 +215,108 @@
   justify-content: center;
 }
 
-/* Mission Section */
+/* Mission & Vision Section */
 .mission-section {
   padding: 6rem 0;
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  color: var(--white);
+  color: white;
   position: relative;
   overflow: hidden;
 }
 
-.mission-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
-  opacity: 0.1;
-  z-index: 1;
-  pointer-events: none;
-}
-
 .mission-section .container {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.mission-content {
-  max-width: 800px;
-  margin: 0 auto;
+.mission-vision-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.mission-box, .vision-box {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 3rem 2.5rem;
   text-align: center;
+  backdrop-filter: blur(8px);
+  border: none;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
 }
 
-.mission-content h2 {
-  color: var(--white);
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+.mission-box:hover, .vision-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.mission-content p {
+.mission-icon, .vision-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--accent);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.mission-box h3, .vision-box h3 {
+  color: #ffffff !important;
+  font-size: 1.75rem;
+  margin: 0 0 1.25rem 0;
+  font-weight: 600;
+  width: 100%;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.mission-box p, .vision-box p {
+  color: white;
   font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 2rem;
-  opacity: 0.95;
+  margin: 0;
+  max-width: 100%;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mission-section .container {
+    padding: 0 1.25rem;
+  }
+  
+  .mission-box, .vision-box {
+    padding: 2.5rem 1.5rem;
+    min-height: 280px;
+  }
+  
+  .mission-box h3, .vision-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .mission-box p, .vision-box p {
+    font-size: 1rem;
+  }
+  
+  .mission-icon, .vision-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
 }
 
 /* Team Section */
@@ -406,9 +463,9 @@
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(26, 86, 219, 0.4); }
-  70% { box-shadow: 0 0 0 8px rgba(26, 86, 219, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(26, 86, 219, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
 }
 
 .btn-primary:hover {
@@ -432,10 +489,10 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #1a56db 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%);
   color: white;
   border: none;
-  box-shadow: 0 4px 15px rgba(26, 86, 219, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -448,7 +505,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1e40af 0%, #1a56db 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: -1;
@@ -463,61 +520,60 @@
 }
 
 .contact-item {
-  background: rgba(255, 255, 255, 0.95);
+  background: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
   position: relative;
   overflow: hidden;
-}
-
-.contact-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, #f9c74f, #f3a712);
-  transition: width 0.3s ease;
-}
-
-.contact-item:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-}
-
-.contact-item:hover::before {
-  width: 6px;
+  text-align: center;
 }
 
 .contact-icon {
   font-size: 1.8rem;
-  color: #f9c74f;
-  margin-bottom: 1.25rem;
-  display: inline-flex;
+  color: #4b5563;
+  margin: 0 auto 1.25rem;
+  display: flex;
   align-items: center;
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: rgba(249, 199, 79, 0.1);
+  background: #f9fafb;
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
-.contact-item:hover .contact-icon {
-  background: #f9c74f;
-  color: white;
-  transform: rotate(5deg) scale(1.1);
+.contact-item h4 {
+  color: #1f2937;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: #4b5563;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.contact-item a {
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.contact-item a:hover {
+  color: #111827;
+  text-decoration: none;
 }
 
 .contact-item h4 {
   font-size: 1.3rem;
   margin-bottom: 1.25rem;
-  color: #0a2540;
+  color: #1f2937;
   font-weight: 600;
   position: relative;
   padding-bottom: 0.75rem;
