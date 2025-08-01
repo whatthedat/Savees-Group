@@ -73,6 +73,10 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+.section-header h2::after {
+  content: none;
+}
+
 .section-divider {
   height: 4px;
   width: 80px;
@@ -192,7 +196,7 @@
   transform: scale(1.05);
 }
 
-.feature-icon {
+.feature-icon2 {
   font-size: 2.2rem;
   color: var(--accent);
   transition: var(--transition);
@@ -225,7 +229,7 @@
 }
 
 .mission-section .container {
-  max-width: 800px;
+  max-width: auto;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -237,7 +241,8 @@
   width: 100%;
 }
 
-.mission-box, .vision-box {
+.mission-box,
+.vision-box {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 3rem 2.5rem;
@@ -255,12 +260,14 @@
   margin: 0 auto;
 }
 
-.mission-box:hover, .vision-box:hover {
+.mission-box:hover,
+.vision-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.mission-icon, .vision-icon {
+.mission-icon,
+.vision-icon {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
@@ -274,7 +281,8 @@
   border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
-.mission-box h3, .vision-box h3 {
+.mission-box h3,
+.vision-box h3 {
   color: #ffffff !important;
   font-size: 1.75rem;
   margin: 0 0 1.25rem 0;
@@ -283,7 +291,8 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.mission-box p, .vision-box p {
+.mission-box p,
+.vision-box p {
   color: white;
   font-size: 1.1rem;
   line-height: 1.8;
@@ -297,21 +306,25 @@
   .mission-section .container {
     padding: 0 1.25rem;
   }
-  
-  .mission-box, .vision-box {
+
+  .mission-box,
+  .vision-box {
     padding: 2.5rem 1.5rem;
     min-height: 280px;
   }
-  
-  .mission-box h3, .vision-box h3 {
+
+  .mission-box h3,
+  .vision-box h3 {
     font-size: 1.5rem;
   }
-  
-  .mission-box p, .vision-box p {
+
+  .mission-box p,
+  .vision-box p {
     font-size: 1rem;
   }
-  
-  .mission-icon, .vision-icon {
+
+  .mission-icon,
+  .vision-icon {
     width: 70px;
     height: 70px;
     font-size: 1.75rem;
@@ -463,9 +476,17 @@
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1); }
-  70% { box-shadow: 0 0 0 8px rgba(0, 0, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
 
 .btn-primary:hover {
@@ -530,7 +551,7 @@
   text-align: center;
 }
 
-.contact-icon {
+.contact-icon2 {
   font-size: 1.8rem;
   color: #4b5563;
   margin: 0 auto 1.25rem;
@@ -542,6 +563,8 @@
   background: #f9fafb;
   border-radius: 12px;
 }
+
+
 
 .contact-item h4 {
   color: #1f2937;
@@ -629,8 +652,31 @@
   word-break: break-all;
 }
 
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid red; */
+  /* width: 4000px; */
+}
+
+.mission-card {
+  background-color: #ffffff21;
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 1%;
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+}
+
 /* Mobile First Styles */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) => previous style */  
+@media (max-width: 536px) {
   .about-hero {
     padding: 4rem 1rem 2rem;
     text-align: center;
@@ -652,21 +698,25 @@
     margin-bottom: 1.5rem;
   }
 
-  .about-content, .mission-content {
+  .about-content,
+  .mission-content {
     flex-direction: column;
     gap: 2rem;
   }
 
-  .about-image, .mission-image {
+  .about-image,
+  .mission-image {
     order: -1;
     width: 100%;
     max-width: 100%;
     margin: 0 auto 1.5rem;
   }
 
-  .feature-card, .mission-card {
+  .feature-card,
+  .mission-card {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    width: auto;
   }
 
   .contact-info {
@@ -703,12 +753,14 @@
     padding: 5rem 2rem 3rem;
   }
 
-  .about-content, .mission-content {
+  .about-content,
+  .mission-content {
     flex-direction: column;
     gap: 2.5rem;
   }
 
-  .about-image, .mission-image {
+  .about-image,
+  .mission-image {
     order: -1;
     max-width: 600px;
     margin: 0 auto 2rem;
@@ -739,11 +791,13 @@
     gap: 3rem;
   }
 
-  .about-text, .mission-text {
+  .about-text,
+  .mission-text {
     flex: 1;
   }
 
-  .about-image, .mission-image {
+  .about-image,
+  .mission-image {
     flex: 1;
   }
 
@@ -766,7 +820,8 @@
     padding: 8rem 0 4rem;
   }
 
-  .about-content, .mission-content {
+  .about-content,
+  .mission-content {
     max-width: 1400px;
     margin: 0 auto;
   }

@@ -6,22 +6,22 @@ import './About.css';
 const About = () => {
   const features = [
     {
-      icon: <FaCheckCircle className="feature-icon" />,
+      icon: <FaCheckCircle className="feature-icon2" />,
       title: 'Proven Quality',
       description: 'Consistently delivering exceptional service with a focus on excellence and attention to detail.'
     },
     {
-      icon: <FaUsers className="feature-icon" />,
+      icon: <FaUsers className="feature-icon2" />,
       title: 'Expert Team',
       description: 'Our team of professionals brings years of industry experience and specialized knowledge.'
     },
     {
-      icon: <FaHandshake className="feature-icon" />,
+      icon: <FaHandshake className="feature-icon2" />,
       title: 'Trusted Partner',
       description: 'Building long-term relationships based on trust, reliability, and mutual success.'
     },
     {
-      icon: <FaGlobe className="feature-icon" />,
+      icon: <FaGlobe className="feature-icon2" />,
       title: 'Global Reach',
       description: 'Bridging Kerala and the UK with international standards and local expertise.'
     }
@@ -32,7 +32,7 @@ const About = () => {
       {/* Hero Section */}
       <section className="about-hero">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="hero-content"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const About = () => {
       {/* Who We Are Section */}
       <section className="about-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="section-header"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,9 +57,9 @@ const About = () => {
             <h2>Who We Are</h2>
             <div className="section-divider"></div>
           </motion.div>
-          
+
           <div className="about-content">
-            <motion.div 
+            <motion.div
               className="about-text"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -67,26 +67,26 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <p>
-                Founded with deep roots in Kerala, India, Savees Group has grown to establish a strong presence in the United Kingdom. 
-                Our journey began with a simple vision: to bridge the gap between exceptional talent and outstanding opportunities 
+                Founded with deep roots in Kerala, India, Savees Group has grown to establish a strong presence in the United Kingdom.
+                Our journey began with a simple vision: to bridge the gap between exceptional talent and outstanding opportunities
                 across international borders.
               </p>
               <p>
-                Today, we stand as a testament to the power of dedication, integrity, and cross-cultural collaboration. 
-                Our dual heritage allows us to bring together the best of both worlds - the rich work ethic and technical 
+                Today, we stand as a testament to the power of dedication, integrity, and cross-cultural collaboration.
+                Our dual heritage allows us to bring together the best of both worlds - the rich work ethic and technical
                 expertise from Kerala with the professional standards and global perspective of the UK.
               </p>
             </motion.div>
-            <motion.div 
+            <motion.div
               className="about-image"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                alt="Our Team" 
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                alt="Our Team"
                 loading="lazy"
               />
             </motion.div>
@@ -97,7 +97,7 @@ const About = () => {
       {/* Why Choose Us Section */}
       <section className="features-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="section-header"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,11 +108,11 @@ const About = () => {
             <div className="section-divider"></div>
             <p>We're committed to delivering exceptional value through our unique strengths</p>
           </motion.div>
-          
+
           <div className="features-grid">
             {features.map((feature, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="feature-card"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -134,7 +134,7 @@ const About = () => {
       <section className="mission-section">
         <div className="container">
           <div className="mission-content">
-            <motion.div 
+            <motion.div
               className="mission-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -147,8 +147,8 @@ const About = () => {
               <h3>Our Vision</h3>
               <p>To be the most trusted bridge between global talent and opportunities, setting new standards of excellence in international staffing and business solutions.</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="mission-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -168,7 +168,7 @@ const About = () => {
       {/* Connect CTA Section */}
       <section className="connect-section">
         <div className="container">
-          <motion.div 
+          <motion.div
             className="connect-content"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,10 +185,10 @@ const About = () => {
                 Our Services
               </Link>
             </div>
-            
+
             <div className="contact-info">
               <div className="contact-item">
-                <FaMapMarkerAlt className="contact-icon" />
+                <FaMapMarkerAlt className="contact-icon2" />
                 <div>
                   <h4>Our Address</h4>
                   <p>22A Queens Parade</p>
@@ -197,14 +197,14 @@ const About = () => {
                 </div>
               </div>
               <div className="contact-item">
-                <FaPhone className="contact-icon" />
+                <FaPhone className="contact-icon2" />
                 <div>
                   <h4>Call Us</h4>
                   <p><a href="tel:+447543538033">07543 538033</a></p>
                 </div>
               </div>
               <div className="contact-item">
-                <FaEnvelope className="contact-icon" />
+                <FaEnvelope className="contact-icon2" />
                 <div>
                   <h4>Email Us</h4>
                   <p><a href="mailto:info@saveesgroup.com">info@saveesgroup.com</a></p>

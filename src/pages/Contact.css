@@ -139,6 +139,7 @@ h2 {
 
 .form-control,
 .form-group textarea,
+.form-group input,
 .form-group select {
   width: 100%;
   padding: 1rem 1.25rem;
