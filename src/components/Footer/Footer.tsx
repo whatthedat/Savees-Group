@@ -18,7 +18,7 @@ const Footer = () => {
               We are committed to delivering the best solutions for our clients.
             </p>
             <div className="social-links">
-              <a href="https://www.facebook.com/share/1CC3s7JStf/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <a href="https://www.facebook.com/saveesgroup/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebook />
               </a>
               <a href="https://www.instagram.com/savees_group_ltd" target="_blank" rel="noopener noreferrer" aria-label="Instagram">

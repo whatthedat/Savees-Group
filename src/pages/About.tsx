@@ -200,7 +200,7 @@ const About = () => {
                 <FaPhone className="contact-icon" />
                 <div>
                   <h4>Call Us</h4>
-                  <p><a href="tel:+447543538033">07543 538033</a></p>
+                  <p><a href="tel:+447543538033">+44 7543 538033</a></p>
                 </div>
               </div>
               <div className="contact-item">
