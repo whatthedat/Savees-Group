@@ -144,7 +144,7 @@ const About = () => {
               <div className="mission-icon">
                 <FaBullseye />
               </div>
-              <h3>Our Vision</h3>
+              <h3 className='mission-heading'>Our Vision</h3>
               <p>To be the most trusted bridge between global talent and opportunities, setting new standards of excellence in international staffing and business solutions.</p>
             </motion.div>
 
@@ -158,7 +158,7 @@ const About = () => {
               <div className="mission-icon">
                 <FaLightbulb />
               </div>
-              <h3>Our Mission</h3>
+              <h3 className='mission-heading'>Our Mission</h3>
               <p>To connect exceptional talent with outstanding opportunities through innovative solutions, cultural understanding, and unwavering commitment to quality and integrity.</p>
             </motion.div>
           </div>
@@ -200,7 +200,7 @@ const About = () => {
                 <FaPhone className="contact-icon2" />
                 <div>
                   <h4>Call Us</h4>
-                  <p><a href="tel:+447543538033">07543 538033</a></p>
+                  <p><a href="tel:+447543538033">+44 7543 538033</a></p>
                 </div>
               </div>
               <div className="contact-item">

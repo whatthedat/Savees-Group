@@ -114,7 +114,7 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: var(--navy);
+  /* background-color: var(--navy); */
   color: rgb(255, 255, 255);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -122,11 +122,12 @@ a:hover {
 .btn-primary:hover {
   background-color: #f9c74f;
   transform: translateY(-2px);
+  color: white;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .btn-primary::before {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--gold) 100%);
+  /* background: linear-gradient(135deg, var(--navy) 0%, var(--gold) 100%); */
 }
 
 .btn-primary:hover::before {

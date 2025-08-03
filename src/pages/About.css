@@ -222,16 +222,22 @@
 /* Mission & Vision Section */
 .mission-section {
   padding: 6rem 0;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+  background: linear-gradient(135deg, #0a2540 0%, #1a365d 100%);
   color: white;
   position: relative;
   overflow: hidden;
 }
 
-.mission-section .container {
-  max-width: auto;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+.mission-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+  opacity: 0.1;
+  z-index: 1;
 }
 
 .mission-vision-container {
@@ -271,14 +277,14 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
   color: var(--accent);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  /* border: 2px solid rgba(255, 255, 255, 0.15); */
 }
 
 .mission-box h3,
@@ -662,20 +668,25 @@
 }
 
 .mission-card {
-  background-color: #ffffff21;
-  backdrop-filter: blur(1px);
-  display: flex;
+  background: rgba(255, 255, 255, 0.1);  /* translucent background */  /* translucent layer */
+  backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);           /* applies the blur */  display: flex;
   align-items: center;
+  /* justify-content: center; */
   text-align: center;
   flex-direction: column;
-  padding: 1%;
+  padding: 5px;
   width: 500px;
   height: 300px;
   border-radius: 20px;
 }
 
+.mission-heading{
+  color: white;
+}
+
 /* Mobile First Styles */
-/* @media (max-width: 480px) => previous style */  
+/* @media (max-width: 480px) => previous style */
 @media (max-width: 536px) {
   .about-hero {
     padding: 4rem 1rem 2rem;

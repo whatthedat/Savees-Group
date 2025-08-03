@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaCheckCircle, FaWhatsapp, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -156,68 +156,31 @@ const Contact = () => {
             <p>Our dedicated team is here to help you find the perfect staffing solutions for your hospitality needs. Reach out to us through any of these channels.</p>
           </motion.div>
 
-          <div className="contact-methods-grid">
-            <motion.div
-              className="contact-method"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="contact-method-content">
-                <div className="contact-icon">
-                  <FaMapMarkerAlt />
-                </div>
-                <div>
-                  <h3>Our Location</h3>
-                  <p>123 Hospitality Lane</p>
-                  <p>London, UK</p>
-                  <p>SW1A 1AA</p>
-                </div>
+          <div className="contact-info">
+            <div className="contact-item">
+              <FaMapMarkerAlt className="contact-icon2" />
+              <div>
+                <h4>Our Address</h4>
+                <p>22A Queens Parade</p>
+                <p>Hanger Lane</p>
+                <p>W5 3HU, UK</p>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="contact-method"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="contact-method-content">
-                <div className="contact-icon">
-                  <FaPhone />
-                </div>
-                <div>
-                  <h3>Phone Number</h3>
-                  <p><a href="tel:+447543538033">+44 754 353 8033</a></p>
-                  <p><a href="tel:+448000123456">+44 800 012 3456</a> (Toll-free)</p>
-                </div>
+            </div>
+            <div className="contact-item">
+              <FaPhone className="contact-icon2" />
+              <div>
+                <h4>Call Us</h4>
+                <p><a href="tel:+447543538033">+44 7543 538033</a></p>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="contact-method"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="contact-method-content">
-                <div className="contact-icon">
-                  <FaEnvelope />
-                </div>
-                <div>
-                  <h3>Email Us</h3>
-                  <p><a href="mailto:info@saveesgroup.com">info@saveesgroup.com</a></p>
-                  <p><a href="mailto:careers@saveesgroup.com">careers@saveesgroup.com</a></p>
-                  <p><a href="mailto:support@saveesgroup.com">support@saveesgroup.com</a></p>
-                </div>
+            </div>
+            <div className="contact-item">
+              <FaEnvelope className="contact-icon2" />
+              <div>
+                <h4>Email Us</h4>
+                <p><a href="mailto:info@saveesgroup.com">info@saveesgroup.com</a></p>
+                <p><a href="mailto:saveesgroupltd@gmail.com">saveesgroupltd@gmail.com</a></p>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -435,7 +398,7 @@ const Contact = () => {
         rel="noopener noreferrer"
         aria-label="Chat with us on WhatsApp"
       >
-        <i className="fab fa-whatsapp" />
+        <FaWhatsapp size={40} />
       </a>
     </main>
   );

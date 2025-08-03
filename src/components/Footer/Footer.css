@@ -3,7 +3,7 @@
   color: var(--white);
   padding: var(--spacing-xl) 0 0;
   position: relative;
-  width: 1521px;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
   box-sizing: border-box;
